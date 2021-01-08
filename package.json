@@ -1,0 +1,14 @@
+{
+  "name": "webpackstudy",
+  "version": "1.0.0",
+  "description": "for webpack4 study",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack4Study"
+  ],
+  "author": "ycy",
+  "license": "ISC"
+}
