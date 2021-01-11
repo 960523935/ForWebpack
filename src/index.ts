@@ -6,4 +6,6 @@ function get() {
   console.log(321);
 }
 
-module.exports = get;
+get();
+
+export default get;
