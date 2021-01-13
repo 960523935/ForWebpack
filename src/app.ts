@@ -4,6 +4,4 @@ function doApp() {
   return name;
 }
 
-doApp();
-
 export default doApp;

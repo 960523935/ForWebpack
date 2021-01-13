@@ -6,11 +6,10 @@ const config = {
   mode: "production",
   entry: {
     main: "./src/index.ts",
-    app: "./src/app.ts",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[chunkhash:8].buldle.js",
+    filename: "[name].[contenthash].buldle.js",
   },
   loader: {
     test: /\.ts$/,

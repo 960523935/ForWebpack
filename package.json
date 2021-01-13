@@ -4,7 +4,8 @@
   "description": "for webpack4 study",
   "main": "index.ts",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "build-dev": "webpack --mode=development"
   },
   "keywords": [
     "webpack4Study"
