@@ -5,7 +5,7 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 const config = {
   mode: "production",
   entry: {
-    main: "./src/index.ts",
+    main: "./app.tsx",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -20,6 +20,7 @@ const config = {
     new CleanWebpackPlugin(),
   ],
   resolve: {
+    // import 代码不用补全这些文件结尾
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
 };
