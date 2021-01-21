@@ -11,9 +11,11 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].buldle.js",
   },
-  loader: {
-    test: /\.ts$/,
-    use: ["babel-loader", "ts-loader"],
+  module: {
+    rules: [
+      { test: /\.tsx?$/, use: ["ts-loader"] },
+      { test: /\.less$/, use: "less-loader" },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({ template: "./index.html" }),
