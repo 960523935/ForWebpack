@@ -5,16 +5,34 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 const config = {
   mode: "production",
   entry: {
-    main: "./app.tsx",
+    main: "./src/msg/index.ts",
+    // use: "./src/msg/use.ts",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].buldle.js",
+    libraryTarget: "umd",
+    library: "CJMsg",
   },
   module: {
     rules: [
       { test: /\.tsx?$/, use: ["ts-loader"] },
-      { test: /\.less$/, use: ["style-loader", "css-loader", "less-loader"] },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: "css-loader",
+            options: {},
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              // execute: true,
+            },
+          },
+          "less-loader",
+        ],
+      },
     ],
   },
   plugins: [
