@@ -4,15 +4,18 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 const config = {
   mode: "production",
+  devtool: "source-map",
   entry: {
-    main: "./src/msg/index.ts",
-    // use: "./src/msg/use.ts",
+    cjmsg: "./src/msg/index.tsx",
+    use: "./src/msg/use.ts",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[contenthash].buldle.js",
+    // filename: "[name].[contenthash:8].js",
+    filename: "[name].js",
     libraryTarget: "umd",
     library: "CJMsg",
+    libraryExport: "default",
   },
   module: {
     rules: [
@@ -21,13 +24,15 @@ const config = {
         test: /\.less$/,
         use: [
           {
-            loader: "css-loader",
-            options: {},
+            loader: "style-loader",
+            options: {
+              esModule: true,
+            },
           },
           {
-            loader: "postcss-loader",
+            loader: "css-loader",
             options: {
-              // execute: true,
+              modules: { localIdentName: "[local]__[hash:5]" },// className模块化
             },
           },
           "less-loader",
@@ -42,6 +47,25 @@ const config = {
   resolve: {
     // import 代码不用补全这些文件结尾
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+  },
+  // externals: {
+  //   react: {
+  //     commonjs: "react",
+  //     commonjs2: "react",
+  //     amd: "react",
+  //     root: "React",
+  //   },
+  //   "react-dom": {
+  //     commonjs: "react-dom",
+  //     commonjs2: "react-dom",
+  //     amd: "react-dom",
+  //     root: "ReactDOM",
+  //   },
+  // },
+  devServer: {
+    port: "5200",
+    inline: true,
+    hot: true,
   },
 };
 

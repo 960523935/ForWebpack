@@ -1,3 +1,3 @@
-// import { CJMsg } from "./index";
+import CJMsg from "./index";
 
-// new CJMsg("test");
+new CJMsg("test");

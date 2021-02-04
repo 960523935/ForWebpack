@@ -1,4 +1,90 @@
-#app {
-  height: 30px;
-  background-color: #ddd;
+:global(#msgBar) {
+  box-sizing: border-box;
+  position: relative;
+  :global(.msgChild) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    pointer-events: none;
+    .cjmsg-container {
+      position: absolute;
+      z-index: 3;
+      opacity: 0;
+      height: 0;
+      transition: 0.5s;
+      .cjmsg-inner {
+        margin-top: 2px;
+        width: 100%;
+        height: calc(100% - 2px);
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.14);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        .cjmsg-tab {
+          display: flex;
+          flex: none;
+          border-bottom: 1px solid #e6e6e6;
+          .cjmsg-childtab {
+            flex: auto;
+            cursor: pointer;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            position: relative;
+            font-family: PingFangSC-Medium, PingFang SC;
+            user-select: none;
+            &.active-tab {
+              color: #ff7700;
+            }
+            &:last-child {
+              &:after {
+                display: none;
+              }
+            }
+            &:after {
+              content: "";
+              display: block;
+              width: 1px;
+              height: 20px;
+              background: #999;
+              position: absolute;
+              right: 0;
+              top: 20px;
+            }
+          }
+        }
+        .cjmsg-msglist {
+          flex: auto;
+          overflow-y: auto;
+        }
+        .cjmsg-bottom {
+          height: 41px;
+          border-top: 1px solid #e6e6e6;
+          flex: none;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 28px 0 20px;
+          font-size: 12px;
+          user-select: none;
+          .cjmsg-mark-read {
+            color: #999999;
+            cursor: pointer;
+          }
+          .cjmsg-goto-all {
+            color: #ff7700;
+            cursor: pointer;
+          }
+        }
+      }
+      &.show {
+        opacity: 1;
+      }
+    }
+  }
 }

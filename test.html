@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="加载10000条节点" onclick="fnAddDoms()">
+<input type="button" value="删除所有节点方法一" onclick="fnDeleteDoms0()">
+<input type="button" value="删除所有节点方法二" onclick="fnDeleteDoms1()">
+<input type="button" value="删除所有节点方法三" onclick="fnDeleteDoms2()">
+<div id="div11">
+</div>
+ 
+<script>
+ 
+    function fnAddDoms() {
+        var domDiv = document.getElementById('div11');
+ 
+        for (var i = 0; i < 10000; i++) {
+            var domSub = document.createElement('div');
+            domSub.setAttribute('class', 'subDiv');
+            domSub.innerHTML = "111";
+            domDiv.appendChild(domSub);
+        }
+    }
+    function fnDeleteDoms0() {
+        var domDiv = document.getElementById('div11');
+        var dStart = new Date().getTime();
+        domDiv.innerText = null;
+        var dEnd = new Date().getTime();
+        console.log('耗时：' + (dEnd - dStart) + 'ms');
+    }
+    function fnDeleteDoms1() {
+        var domDiv = document.getElementById('div11');
+        var domSubDivs = document.getElementsByClassName('subDiv');
+ 
+        var dStart = new Date().getTime();
+        var j = domSubDivs.length;
+        for (var i = j - 1; i >= 0; i--) {
+            domSubDivs[i].style.display = 'none';
+        }
+        var dEnd = new Date().getTime();
+ 
+        console.log('耗时：' + (dEnd - dStart) + 'ms');
+ 
+        for (var i = j - 1; i >= 0; i--) {
+            domDiv.removeChild(domSubDivs[i]);
+        }
+    }
+ 
+    function fnDeleteDoms2() {
+        var domDiv = document.getElementById('div11');
+        var domSubDivs = document.getElementsByClassName('subDiv');
+ 
+        var dStart = new Date().getTime();
+        var j = domSubDivs.length;
+        for (var i = j - 1; i >= 0; i--) {
+            domDiv.removeChild(domSubDivs[i]);
+        }
+        var dEnd = new Date().getTime();
+ 
+        console.log('耗时：' + (dEnd - dStart) + 'ms');
+    }
+ 
+ 
+</script>
+</body>
+</html>
