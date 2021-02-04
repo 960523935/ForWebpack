@@ -42,7 +42,9 @@ const Msg = (props: any) => {
 
   return (
     <div
-      className={css["cjmsg-container"]}
+      className={classnames({
+        css["cjmsg-container"]:true
+      })}
       style={{
         width: msgBoxPos.width,
         left: msgBoxPos.left,
