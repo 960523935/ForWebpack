@@ -2,20 +2,13 @@
   box-sizing: border-box;
   position: relative;
   :global(.msgChild) {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-    pointer-events: none;
-    .cjmsg-container {
+    .cjmsgContainer {
       position: absolute;
       z-index: 3;
       opacity: 0;
       height: 0;
       transition: 0.5s;
-      .cjmsg-inner {
+      .cjmsgInner {
         margin-top: 2px;
         width: 100%;
         height: calc(100% - 2px);
@@ -25,11 +18,11 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        .cjmsg-tab {
+        .cjmsgTab {
           display: flex;
           flex: none;
           border-bottom: 1px solid #e6e6e6;
-          .cjmsg-childtab {
+          .cjmsgChildtab {
             flex: auto;
             cursor: pointer;
             height: 60px;
@@ -38,7 +31,7 @@
             position: relative;
             font-family: PingFangSC-Medium, PingFang SC;
             user-select: none;
-            &.active-tab {
+            &.activeTab {
               color: #ff7700;
             }
             &:last-child {
@@ -58,11 +51,35 @@
             }
           }
         }
-        .cjmsg-msglist {
+        .cjmsgMsglist {
           flex: auto;
           overflow-y: auto;
+          .messageItem {
+            padding: 10px;
+            height: auto;
+            font-size: 16px;
+            line-height: 30px;
+            padding: 0 20px 0 26px;
+            &:hover {
+              background: rgba(239, 239, 239, 0.7);
+              p {
+                color: #333 !important;
+              }
+              span {
+                color: #999 !important;
+              }
+            }
+            .isTopBage {
+              position: absolute;
+              border: 10px solid transparent;
+              border-top-color: #ff7700;
+              border-left-color: #ff7700;
+              top: 0;
+              left: -27px;
+            }
+          }
         }
-        .cjmsg-bottom {
+        .cjmsgBottom {
           height: 41px;
           border-top: 1px solid #e6e6e6;
           flex: none;
@@ -72,11 +89,11 @@
           padding: 0 28px 0 20px;
           font-size: 12px;
           user-select: none;
-          .cjmsg-mark-read {
+          .cjmsgMarkRead {
             color: #999999;
             cursor: pointer;
           }
-          .cjmsg-goto-all {
+          .cjmsgGotoAll {
             color: #ff7700;
             cursor: pointer;
           }

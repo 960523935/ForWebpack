@@ -46,15 +46,15 @@ class Msg {
   /**添加底部操作 */
   addBottom() {
     const bottom = document.createElement("div"); // 底部模块
-    bottom.className = "cjmsg-bottom";
+    bottom.className = "cjmsgBottom";
 
     const markAllRead = document.createElement("div"); // 左侧的标记所有为已读
-    markAllRead.className = "cjmsg-mark-read";
+    markAllRead.className = "cjmsgMarkRead";
     markAllRead.innerHTML = "Mark All as Read";
     markAllRead.onclick = this.markAllRead;
 
     const goToReadAll = document.createElement("div"); // 右侧的跳转所有消息
-    goToReadAll.className = "cjmsg-goto-all";
+    goToReadAll.className = "cjmsgGotoAll";
     goToReadAll.innerHTML = "Read All >";
     goToReadAll.onclick = this.goToReadAll;
 
@@ -76,20 +76,20 @@ class Msg {
   /**添加消息列表 */
   addCenter() {
     const center = document.createElement("div"); // 消息列表
-    center.className = "cjmsg-msglist";
+    center.className = "cjmsgMsglist";
 
     this.addToBox(center);
   }
 
   /**节点添加到消息盒子中 */
   addToBox(child: Node) {
-    document.getElementsByClassName("cjmsg-inner")[0]?.appendChild(child);
+    document.getElementsByClassName("cjmsgInner")[0]?.appendChild(child);
   }
 
   /**添加tab */
   addTab() {
     const tab = document.createElement("div");
-    tab.className = "cjmsg-tab";
+    tab.className = "cjmsgTab";
     for (let i = 0; i < this.tabList.length; i++) {
       const childTab = document.createElement("div");
       const id = `cjmsgtab_${i}`;
@@ -135,8 +135,8 @@ class Msg {
     this.msgBox = document.createElement("div");
     const innerBox = document.createElement("div");
 
-    this.msgBox.className = "cjmsg-container";
-    innerBox.className = "cjmsg-inner";
+    this.msgBox.className = "cjmsgContainer";
+    innerBox.className = "cjmsgInner";
 
     this.msgBox.style.width = `${this.msgBoxPos.width}px`;
     this.msgBox.style.left = `${

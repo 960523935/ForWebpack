@@ -8,7 +8,7 @@ export default class {
   }
   init(props: any = {}) {
     const parentDom = document.getElementById("msgBar");
-    const childDom = document.createElement("div");
+    const childDom = document.createElement("div"); // 插入到一个空div,防止ReactDOM.render清空父节点下的所有子节点
     childDom.className = "msgChild";
     ReactDOM.render(<Msg {...props} />, childDom);
     parentDom?.appendChild(childDom);
